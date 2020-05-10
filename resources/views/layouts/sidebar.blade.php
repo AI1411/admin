@@ -361,7 +361,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/examples/projects.html" class="nav-link">
+                            <a href="{{ route('projects.index') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Projects</p>
                             </a>

@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             TodoSeeder::class,
             StatusSeeder::class,
+            ActivitySeeder::class,
         ]);
     }
 }

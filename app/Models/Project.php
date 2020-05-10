@@ -16,6 +16,11 @@ class Project extends Model
         return $this->belongsTo(Status::class);
     }
 
+    public function activities()
+    {
+        return $this->hasMany(Activity::class);
+    }
+
     public function getStatusBadgeAttribute()
     {
         if ($this->status_id === 1) {

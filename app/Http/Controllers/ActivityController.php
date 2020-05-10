@@ -3,16 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Activity;
-use App\Models\Project;
 use Illuminate\Http\Request;
 
-class ProjectController extends Controller
+class ActivityController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $projects = Project::with('users')->get();
-
-        return view('projects.index', compact('projects'));
+        //
     }
 
     /**
@@ -36,20 +38,24 @@ class ProjectController extends Controller
         //
     }
 
-    public function show(Project $project)
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Activity  $activity
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Activity $activity)
     {
-        $activities = Activity::with('user', 'project')->where('project_id', $project->id)->get();
-
-        return view('projects.show', compact('project', 'activities'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Project  $project
+     * @param  \App\Models\Activity  $activity
      * @return \Illuminate\Http\Response
      */
-    public function edit(Project $project)
+    public function edit(Activity $activity)
     {
         //
     }
@@ -58,10 +64,10 @@ class ProjectController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Project  $project
+     * @param  \App\Models\Activity  $activity
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Project $project)
+    public function update(Request $request, Activity $activity)
     {
         //
     }
@@ -69,10 +75,10 @@ class ProjectController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Project  $project
+     * @param  \App\Models\Activity  $activity
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Project $project)
+    public function destroy(Activity $activity)
     {
         //
     }
