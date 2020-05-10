@@ -55,12 +55,16 @@
                                             </a>
                                         </td>
                                         <td>
-                                            <a href="{{ route('users.edit', $user->id) }}">
-                                                <button class="btn btn-default btn-block btn-sm">編集</button>
-                                            </a>
+                                            @if($user->id == auth()->id())
+                                                <a href="{{ route('users.edit', $user->id) }}">
+                                                    <button class="btn btn-default btn-block btn-sm">編集</button>
+                                                </a>
+                                            @endif
                                         </td>
                                         <td>
-                                            <button class="btn btn-danger btn-block btn-sm">削除</button>
+                                            @if($user->id == auth()->id())
+                                                <button class="btn btn-danger btn-block btn-sm">削除</button>
+                                            @endif
                                         </td>
                                     </tr>
                                 @empty

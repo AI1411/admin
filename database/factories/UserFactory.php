@@ -24,6 +24,7 @@ $factory->define(User::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'description' => $faker->realText(),
+        'image' => random_int(1,20) . '.jpeg',
         'company_id' => random_int(1, Company::all()->count()),
         'role_id' => 2,
         'email' => $faker->unique()->safeEmail,

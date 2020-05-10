@@ -10,4 +10,9 @@ class Status extends Model
     {
         return $this->hasMany(Todo::class);
     }
+
+    public function projects()
+    {
+        return $this->hasMany(Project::class);
+    }
 }

@@ -116,7 +116,6 @@
             <div class="row">
                 <div class="col-12">
                     <a href="{{ route('users.index') }}" class="btn btn-secondary">一覧に戻る</a>
-                    <input type="submit" value="Save Changes" class="btn btn-success float-right">
                 </div>
             </div>
         </section>

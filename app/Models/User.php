@@ -65,6 +65,11 @@ class User extends Authenticatable
         return $this->hasMany(Todo::class);
     }
 
+    public function projects()
+    {
+        return $this->belongsToMany(Project::class, 'projects_members', 'user_id', 'project_id');
+    }
+
     public function scopeSearchName($query)
     {
         $search_name = Request::input('search_name');
