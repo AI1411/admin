@@ -131,7 +131,7 @@
                                     <span class="badge badge-{{ $project->statusBadge }}">{{ $project->status->name }}</span>
                                 </td>
                                 <td class="project-actions text-right">
-                                    <a class="btn btn-primary btn-sm" href="#">
+                                    <a class="btn btn-primary btn-sm" href="{{ route('projects.show', $project->id) }}">
                                         <i class="fas fa-folder">
                                         </i>
                                         View

@@ -16,7 +16,6 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 Route::middleware('auth')->group(function() {
     Route::get('/', 'HomeController@index')->name('home');
-
     Route::resource('users', 'UserController');
     Route::resource('todos', 'TodoController');
     Route::resource('projects', 'ProjectController');
@@ -29,3 +28,7 @@ Route::middleware('auth')->group(function() {
 
 Auth::routes();
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

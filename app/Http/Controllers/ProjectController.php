@@ -4,36 +4,44 @@ namespace App\Http\Controllers;
 
 use App\Models\Activity;
 use App\Models\Project;
+use App\Models\Status;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
     public function index()
     {
-        $projects = Project::with('users')->get();
+        $projects = Project::with('users')->latest()->get();
 
         return view('projects.index', compact('projects'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        $users = User::all();
+        $statuses = Status::all()->pluck('name', 'id')->prepend('ステータスを選んでください', '0');
+
+        return view('projects.create', compact('statuses', 'users'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $project = new Project();
+        $project->id = Project::all()->count() + 1;
+        $project->name = $request->name;
+        $project->body = $request->body;
+        $project->progress = 0;
+        $project->status_id = $request->status_id;
+
+        foreach ($request->user_id as $item) {
+            User::find($item)->projects()->attach($project->id);
+        }
+
+        $project->save();
+
+        return redirect()->route('home')->with('success', 'プロジェクトを追加しました');
+
     }
 
     public function show(Project $project)
