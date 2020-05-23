@@ -75,6 +75,11 @@ class User extends Authenticatable
         return $this->hasMany(Activity::class);
     }
 
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
+
     public function scopeSearchName($query)
     {
         $search_name = Request::input('search_name');

@@ -23,6 +23,11 @@ Route::middleware('auth')->group(function() {
     Route::get('/csvDownload', 'UserController@csvDownload')->name('csvDownload');
 
     Route::get('/time_records', 'timeRecordController@index')->name('time_records.index');
+
+    Route::get('/messages', 'MessageController@index')->name('messages.index');
+    Route::get('/messages/trashed', 'MessageController@trashed')->name('messages.trashed');
+    Route::get('/messages/{message}', 'MessageController@show')->name('messages.show');
+    Route::post('/messages', 'MessageController@store')->name('messages.store');
 });
 
 

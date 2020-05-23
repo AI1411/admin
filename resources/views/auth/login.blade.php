@@ -8,7 +8,7 @@
     <div class="content-wrapper hold-transition login-page" style="background: white">
         <div class="login-box">
             <div class="login-logo">
-                <a href="../../index2.html"><b>Admin</b>LTE</a>
+                <a href="../../index2.html"><b>管理</b>画面</a>
             </div>
             <!-- /.login-logo -->
             <div class="card">

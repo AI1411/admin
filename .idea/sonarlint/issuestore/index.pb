@@ -81,3 +81,23 @@ Y
 -app/Http/Controllers/TimeRecordController.php,3/1/318b673a41e47cb0861ab9a2993c32442ec1a925
 \
 ,resources/views/time_records/index.blade.php,4/5/453c6c213f4defecbe16939b00d2175054320b0d
+9
+	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+P
+ database/seeds/MessageSeeder.php,e/3/e31011dfcd81633eddcf8a6ad3aadc21b88dc4d6
+U
+%database/factories/MessageFactory.php,3/4/3499ff78409d1c54496880679592a3b63fc7c550
+o
+?database/migrations/2020_05_23_144420_create_messages_table.php,c/8/c85e710c15292b124faeac925b0f65f7f9efbdfc
+F
+app/Models/Message.php,f/a/fa5e4ef3d313f456bcb5b167a7ddaab7d168f075
+Z
+*resources/views/messages/trashed.blade.php,6/2/62775b027421e65cd758c2b6abbb877ccc6d0307
+N
+app/Service/MessageService.php,8/d/8d9476c149ddbfadc3e0c840f29bb0b7dcc65c3a
+X
+(resources/views/messages/index.blade.php,1/3/134853d4beadbf2f6bbfca774617d1aff9cba3a6
+Z
+*app/Http/Controllers/MessageController.php,d/8/d814f13e2d4b069a0efffff378fd6d8b40469a3c
+W
+'resources/views/messages/show.blade.php,1/0/1014964eb42497c5e922de3df477982139b7c62e

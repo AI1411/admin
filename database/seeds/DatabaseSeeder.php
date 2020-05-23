@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             TodoSeeder::class,
             StatusSeeder::class,
             ActivitySeeder::class,
+            MessageSeeder::class,
         ]);
     }
 }
