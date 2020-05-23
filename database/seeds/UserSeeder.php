@@ -31,10 +31,15 @@ class UserSeeder extends Seeder
                 ->pluck('id')
                 ->toArray();
 
+            $random_user3 = User::inRandomOrder()
+                ->where('id', '<>', $user->id)
+                ->take(3)
+                ->pluck('id')
+                ->toArray();
+
             $user->skills()->attach($random_user1);
             $user->projects()->attach($random_user2);
+            $user->follows()->attach($random_user3);
         }
-
-
     }
 }

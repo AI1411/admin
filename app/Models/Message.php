@@ -20,9 +20,4 @@ class Message extends Model
     {
         return $this->belongsTo(User::class);
     }
-
-    public function setToUserAttribute()
-    {
-        return $this->attributes['to_user'] = 'test';
-    }
 }

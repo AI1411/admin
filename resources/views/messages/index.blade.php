@@ -1,6 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
+    @include('vendor.sweetalert.alert')
     <div class="content-wrapper" style="min-height: 1157.69px;">
         <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -22,8 +23,8 @@
         <!-- Main content -->
         <section class="content">
             <div class="row">
-                @include('components.mail_sidebar')
-                <!-- /.col -->
+            @include('components.mail_sidebar')
+            <!-- /.col -->
                 <div class="col-md-9">
                     <div class="card card-primary card-outline">
                         <div class="card-header">
@@ -76,14 +77,6 @@
                                     <tbody>
                                     @foreach($messages['allMessages'] as $message)
                                         <tr>
-                                            <td>
-                                                <div class="icheck-primary">
-                                                    <input type="checkbox" value="" id="check1">
-                                                    <label for="check1"></label>
-                                                </div>
-                                            </td>
-                                            <td class="mailbox-star"><a href="#"><i
-                                                        class="fas fa-star text-warning"></i></a></td>
                                             <td class="mailbox-name">{{ $message->user->name }}</td>
                                             <td class="mailbox-subject">
                                                 <a href="{{ route('messages.show', $message->id) }}">
@@ -92,6 +85,15 @@
                                             </td>
                                             <td class="mailbox-attachment"></td>
                                             <td class="mailbox-date">{{ $message->created_at->diffForHumans() }}</td>
+                                            <td>
+                                                <form action="{{ route('messages.destroy', $message->id) }}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-default btn-sm"><i
+                                                            class="far fa-trash-alt" onclick="return confirm('メッセージを削除しますか？')"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
                                         </tr>
                                     @endforeach
                                     </tbody>

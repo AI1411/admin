@@ -1,5 +1,5 @@
 <div class="col-md-3">
-    <a href="compose.html" class="btn btn-primary btn-block mb-3">Compose</a>
+    <a href="{{ route('messages.create') }}" class="btn btn-primary btn-block mb-3">メールを作成する</a>
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Folders</h3>
@@ -19,24 +19,24 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="far fa-envelope"></i> Sent
+                    <a href="{{ route('messages.sentMessage') }}" class="nav-link">
+                        <i class="far fa-envelope"></i> 送信箱
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="far fa-file-alt"></i> Drafts
+                        <i class="far fa-file-alt"></i> 重要
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="fas fa-filter"></i> Junk
+                        <i class="fas fa-filter"></i> 迷惑メール
                         <span class="badge bg-warning float-right">65</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('messages.trashed') }}" class="nav-link">
-                        <i class="far fa-trash-alt"></i> Trash
+                        <i class="far fa-trash-alt"></i> ゴミ箱
                         <span class="badge bg-warning float-right">{{ $messages['trashed']->count() }}</span>
                     </a>
                 </li>

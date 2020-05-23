@@ -80,6 +80,16 @@ class User extends Authenticatable
         return $this->hasMany(Message::class);
     }
 
+    public function follows()
+    {
+        return $this->belongsToMany(User::class, 'contact_addresses', 'follower_id', 'following_id');
+    }
+
+    public function followers()
+    {
+        return $this->belongsToMany(User::class, 'contact_addresses', 'following_id', 'follower_id');
+    }
+
     public function scopeSearchName($query)
     {
         $search_name = Request::input('search_name');

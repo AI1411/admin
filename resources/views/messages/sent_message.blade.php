@@ -1,13 +1,14 @@
 @extends('layouts.main')
 
 @section('content')
+    @include('vendor.sweetalert.alert')
     <div class="content-wrapper" style="min-height: 1157.69px;">
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>ゴミ箱</h1>
+                        <h1>受信箱</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -74,7 +75,7 @@
                             <div class="table-responsive mailbox-messages">
                                 <table class="table table-hover table-striped">
                                     <tbody>
-                                    @foreach($messages['trashed'] as $message)
+                                    @foreach($sentMessages as $message)
                                         <tr>
                                             <td class="mailbox-name">{{ $message->user->name }}</td>
                                             <td class="mailbox-subject">
@@ -84,14 +85,6 @@
                                             </td>
                                             <td class="mailbox-attachment"></td>
                                             <td class="mailbox-date">{{ $message->created_at->diffForHumans() }}</td>
-                                            <td>
-                                                <form action="{{ route('messages.restore', $message->id) }}" method="post">
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-default btn-sm"><i
-                                                            class="fas fa-reply" onclick="return confirm('ゴミ箱から戻しますか?')"></i>
-                                                    </button>
-                                                </form>
-                                            </td>
                                         </tr>
                                     @endforeach
                                     </tbody>

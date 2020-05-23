@@ -25,21 +25,48 @@ class MessageController extends Controller
 
     public function show(Message $message)
     {
-        $messages = $this->messageService->getMessageByUser();
         $detailMessage = $this->messageService->getMessage()->find($message->id);
 
-        return view('messages.show', compact('detailMessage', 'messages'));
+        return view('messages.show', compact('detailMessage'));
     }
 
     public function trashed()
     {
-        $messages = $this->messageService->getMessageByUser();
+        return view('messages.trashed');
+    }
 
-        return view('messages.trashed', compact('messages'));
+    public function sentMessage()
+    {
+        $sentMessages = $this->messageService->getSentMessage();
+
+        return view('messages.sent_message', compact('sentMessages'));
+    }
+
+    public function create()
+    {
+        $contacts = $this->messageService->getContactAddress();
+
+        return view('messages.create', compact('contacts'));
     }
 
     public function store(Request $request)
     {
         $this->messageService->createMessage($request);
+
+        return redirect()->route('messages.index')->with('success', 'メッセージを送信しました');
+    }
+
+    public function destroy(Message $message)
+    {
+        $this->messageService->deleteMessage($message);
+
+        return redirect()->back()->with('success', 'メッセージを削除しました');
+    }
+
+    public function restore(Message $message)
+    {
+        $message->restore();
+
+        return redirect()->route('messages.index')->with('success', 'ゴミ箱から戻しました');
     }
 }

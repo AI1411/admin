@@ -26,12 +26,13 @@ Route::middleware('auth')->group(function() {
 
     Route::get('/messages', 'MessageController@index')->name('messages.index');
     Route::get('/messages/trashed', 'MessageController@trashed')->name('messages.trashed');
+    Route::get('/sentMessage', 'MessageController@sentMessage')->name('messages.sentMessage');
     Route::get('/messages/{message}', 'MessageController@show')->name('messages.show');
+    Route::get('/create/messages', 'MessageController@create')->name('messages.create');
     Route::post('/messages', 'MessageController@store')->name('messages.store');
+    Route::delete('/messages/{message}', 'MessageController@destroy')->name('messages.destroy');
+    Route::post('/messages/{message}', 'MessageController@restore')->name('messages.restore');
 });
-
-
-Auth::routes();
 
 
 Auth::routes();
