@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Message;
 use App\Models\User;
 use App\Service\MessageService;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class MessageController extends Controller
@@ -26,6 +27,11 @@ class MessageController extends Controller
     public function show(Message $message)
     {
         $detailMessage = $this->messageService->getMessage()->find($message->id);
+
+        if (is_null($message->read_at)) {
+            $message->read_at = Carbon::now();
+            $message->update();
+        }
 
         return view('messages.show', compact('detailMessage'));
     }

@@ -3,28 +3,34 @@
 namespace App\Http\Controllers;
 
 use App\Exports\UsersExport;
-use App\Models\Company;
 use App\Models\User;
 use App\Models\Work;
+use App\Service\UserService;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
+    protected $userService;
+
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
+
     public function index(Request $request)
     {
         $keyword = $request->search_name;
 
-        $users = User::with([
-            'skills',
-            'work',
-        ])->searchName()->get();
+        $users = $this->userService->getAllUsers()->get();
 
         return view('users.index', compact('users', 'keyword'));
     }
 
-    public function show(User $user)
+    public function show($id)
     {
+        $user = $this->userService->getAllUsers()->find($id);
+
         return view('users.show', compact('user'));
     }
 

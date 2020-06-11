@@ -19,6 +19,7 @@ class CreateMessagesTable extends Migration
             $table->text('body');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('to');
+            $table->timestamp('read_at')->default(null)->nullable();
 
             $table->softDeletes();
             $table->timestamps();

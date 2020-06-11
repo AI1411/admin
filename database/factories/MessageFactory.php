@@ -12,6 +12,7 @@ $factory->define(Message::class, function (Faker $faker) {
         'title' => $faker->text(20),
         'body' => $faker->paragraph(3),
         'user_id' => random_int(1, $users),
+        'read_at' => null,
         'to' => random_int(1, $users),
         'created_at' => $faker->dateTime
     ];
