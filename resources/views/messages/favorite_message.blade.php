@@ -94,8 +94,8 @@
                                                             class="far fa-trash-alt" onclick="return confirm('メッセージを削除しますか？')"></i>
                                                     </button>
                                                 </form>
-                                                <form action="">
-                                                    <button name="favorite" type="submit" class="btn btn-default btn-sm" value="{{ $message->id }}"><i class="far fa-star"></i>
+                                                <form action="" class="ml-1">
+                                                    <button name="remove_favorite" type="submit" class="btn btn-default btn-sm" value="{{ $message->id }}"><i class="fas fa-undo-alt"></i>
                                                     </button>
                                                 </form>
                                             </td>

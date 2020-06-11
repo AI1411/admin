@@ -94,8 +94,8 @@
                                                             class="far fa-trash-alt" onclick="return confirm('メッセージを削除しますか？')"></i>
                                                     </button>
                                                 </form>
-                                                <form action="">
-                                                    <button name="favorite" type="submit" class="btn btn-default btn-sm" value="{{ $message->id }}"><i class="far fa-star"></i>
+                                                <form action="" class="ml-1">
+                                                    <button {{ $message->is_favorite == true ? 'disabled' : '' }} name="favorite" type="submit" class="btn btn-{{ $message->is_favorite == true ? 'primary' : 'default' }} btn-sm" value="{{ $message->id }}"><i class="far fa-star"></i>
                                                     </button>
                                                 </form>
                                             </td>

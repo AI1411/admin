@@ -38,9 +38,11 @@ class MessageController extends Controller
         return view('messages.show', compact('detailMessage'));
     }
 
-    public function favorite()
+    public function favorite(Request $request)
     {
         $messages = $this->messageService->getFavoriteMessages();
+
+        $this->messageService->removeMessageFromFavorite($request);
 
         return view('messages.favorite_message', compact('messages'));
     }

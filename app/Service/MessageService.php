@@ -99,4 +99,14 @@ class MessageService
             $message->update();
         }
     }
+
+    public function removeMessageFromFavorite(Request $request)
+    {
+        $messageId = $request->input('remove_favorite');
+        $message = Message::find($messageId);
+        if ($messageId) {
+            $message->is_favorite = false;
+            $message->update();
+        }
+    }
 }
