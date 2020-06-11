@@ -6,12 +6,16 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Request;
+use Kyslik\ColumnSortable\Sortable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, Sortable;
 
 //    protected $with = ['work', 'company'];
+    public $sortable = [
+        'age'
+    ];
 
     /**
      * The attributes that are mass assignable.
@@ -21,6 +25,8 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password',
     ];
+
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -95,6 +101,16 @@ class User extends Authenticatable
         $search_name = Request::input('search_name');
         if ($search_name) {
             return $query->where('name', 'like', "%{$search_name}%");
+        }
+        return $query;
+    }
+
+    public function scopeSortColumn($query)
+    {
+        $column = Request::input('sort');
+        $direction = Request::input('direction');
+        if ($column) {
+            return $query->orderBy($column, $direction);
         }
         return $query;
     }

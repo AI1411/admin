@@ -11,6 +11,7 @@ class UserService
     public function getAllUsers()
     {
         return User::with(['skills', 'work'])
-            ->searchName();
+            ->searchName()
+            ->sortColumn();
     }
 }

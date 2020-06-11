@@ -30,7 +30,7 @@
                                 <thead>
                                 <tr>
                                     <th style="width: 15%">名前</th>
-                                    <th style="width: 5%">年齢</th>
+                                    <th style="width: 5%">@sortablelink('age', '年齢')</th>
                                     <th style="width: 15%">職種</th>
                                     <th style="width: 35%">スキル</th>
                                     <th style="width: 5%"></th>

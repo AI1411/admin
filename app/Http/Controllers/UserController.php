@@ -45,8 +45,6 @@ class UserController extends Controller
     {
         $user->name = $request->name;
         $user->description = $request->description;
-//        $user->role_id = $request->role_id;
-//        $user->company_id = $request->company_id;
         $user->work_id = $request->work_id;
         $user->save();
 
