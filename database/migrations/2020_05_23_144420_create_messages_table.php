@@ -20,6 +20,7 @@ class CreateMessagesTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('to');
             $table->timestamp('read_at')->default(null)->nullable();
+            $table->boolean('is_favorite')->default(false);
 
             $table->softDeletes();
             $table->timestamps();

@@ -24,8 +24,9 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('messages.favorite') }}" class="nav-link">
                         <i class="far fa-file-alt"></i> 重要
+                        <span class="badge bg-primary float-right">{{ $messages['favoriteMessages']->count() }}</span>
                     </a>
                 </li>
                 <li class="nav-item">

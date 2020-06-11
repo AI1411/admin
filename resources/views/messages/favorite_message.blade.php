@@ -75,7 +75,7 @@
                             <div class="table-responsive mailbox-messages">
                                 <table class="table table-hover table-striped">
                                     <tbody>
-                                    @foreach($messages['allMessages'] as $message)
+                                    @foreach($messages['favoriteMessages'] as $message)
                                         <tr>
                                             <td class="mailbox-name">{{ $message->user->name }}</td>
                                             <td class="mailbox-subject">

@@ -23,7 +23,8 @@ class MessageService
         return $data = [
             'trashed' => $this->getTrashedMessages(),
             'allMessages' => $this->getAllMessages(),
-            'unreadMessages' => $this->getUnReadMessageCount()
+            'unreadMessages' => $this->getUnReadMessageCount(),
+            'favoriteMessages' => $this->getFavoriteMessages(),
         ];
     }
 
@@ -80,5 +81,22 @@ class MessageService
             ->where('read_at', null)
             ->get()
             ->count();
+    }
+
+    public function getFavoriteMessages()
+    {
+        return Message::where('to', auth()->id())
+            ->where('is_favorite', true)
+            ->get();
+    }
+
+    public function messageToFavorite(Request $request)
+    {
+        $messageId = $request->input('favorite');
+        $message = Message::find($messageId);
+        if ($messageId) {
+            $message->is_favorite = true;
+            $message->update();
+        }
     }
 }

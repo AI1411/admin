@@ -17,9 +17,11 @@ class MessageController extends Controller
         $this->messageService = $messageService;
     }
 
-    public function index()
+    public function index(Request $request)
     {
         $messages = $this->messageService->getMessageByUser();
+
+        $this->messageService->messageToFavorite($request);
 
         return view('messages.index', compact('messages'));
     }
@@ -34,6 +36,13 @@ class MessageController extends Controller
         }
 
         return view('messages.show', compact('detailMessage'));
+    }
+
+    public function favorite()
+    {
+        $messages = $this->messageService->getFavoriteMessages();
+
+        return view('messages.favorite_message', compact('messages'));
     }
 
     public function trashed()

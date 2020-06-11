@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function() {
     Route::post('/messages', 'MessageController@store')->name('messages.store');
     Route::delete('/messages/{message}', 'MessageController@destroy')->name('messages.destroy');
     Route::post('/messages/{message}', 'MessageController@restore')->name('messages.restore');
+    Route::get('/favoriteMessages', 'MessageController@favorite')->name('messages.favorite');
 });
 
 
