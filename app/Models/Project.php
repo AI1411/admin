@@ -3,9 +3,17 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Request;
+use Kyslik\ColumnSortable\Sortable;
 
 class Project extends Model
 {
+    use Sortable;
+
+    public $sortable = [
+        'progress', 'status_id'
+    ];
+
     public function users()
     {
         return $this->belongsToMany(User::class, 'projects_members', 'project_id', 'user_id');
@@ -41,5 +49,15 @@ class Project extends Model
             return 'blue';
         }
         return 'green';
+    }
+
+    public function scopeSortColumn($query)
+    {
+        $column = Request::input('sort');
+        $direction = Request::input('direction');
+        if ($column) {
+            return $query->orderBy($column, $direction);
+        }
+        return $query;
     }
 }

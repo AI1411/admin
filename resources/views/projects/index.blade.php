@@ -73,16 +73,16 @@
                                 #
                             </th>
                             <th style="width: 20%">
-                                Project Name
+                                プロジェクト名
                             </th>
                             <th style="width: 30%">
-                                Team Members
+                                メンバー
                             </th>
                             <th>
-                                Project Progress
+                                @sortablelink('progress', '進捗')
                             </th>
                             <th style="width: 8%" class="text-center">
-                                Status
+                                @sortablelink('status_id', 'ステータス')
                             </th>
                             <th style="width: 20%">
                             </th>

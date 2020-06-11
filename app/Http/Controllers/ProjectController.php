@@ -12,7 +12,7 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $projects = Project::with('users')->latest()->get();
+        $projects = Project::with('users')->sortColumn()->latest()->get();
 
         return view('projects.index', compact('projects'));
     }
