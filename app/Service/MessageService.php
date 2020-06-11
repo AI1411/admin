@@ -20,13 +20,11 @@ class MessageService
 
     public function getMessageByUser()
     {
-        $data = [];
-
-        $data['trashed'] = $this->getTrashedMessages();
-
-        $data['allMessages'] = $this->getAllMessages();
-
-        return $data;
+        return $data = [
+            'trashed' => $this->getTrashedMessages(),
+            'allMessages' => $this->getAllMessages(),
+            'unreadMessages' => $this->getUnReadMessageCount()
+        ];
     }
 
     public function getMessage()
@@ -74,5 +72,13 @@ class MessageService
     public function restore(Message $message)
     {
         return $message->restore();
+    }
+
+    public function getUnReadMessageCount()
+    {
+        return Message::where('to', auth()->id())
+            ->where('read_at', null)
+            ->get()
+            ->count();
     }
 }

@@ -15,7 +15,7 @@
                 <li class="nav-item active">
                     <a href="{{ route('messages.index') }}" class="nav-link">
                         <i class="fas fa-inbox"></i> 受信箱
-                        <span class="badge bg-primary float-right">{{ $messages['allMessages']->count() }}</span>
+                        <span class="badge bg-primary float-right">{{ $messages['unreadMessages'] }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
